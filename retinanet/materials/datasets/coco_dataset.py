@@ -47,9 +47,10 @@ class CocoDataset(Dataset):
         return len(self.image_ids)
 
     def __getitem__(self, idx):
-
         img = self.load_image(idx)
         annot = self.load_annotations(idx)
+        # 根据load_annotations方法推测，这里面的annot是一个n行5列的numpy array，每一行的格式都为[x1, y1, x2, y2, class]
+        
         sample = {'img': img, 'annot': annot}
         if self.transform:
             sample = self.transform(sample)
