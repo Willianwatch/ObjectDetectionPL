@@ -96,7 +96,7 @@ class Anchors(nn.Module):
             anchors         = generate_anchors(base_size=self.sizes[idx], ratios=self.ratios, scales=self.scales)
             shifted_anchors = shift(image_shapes[idx], self.strides[idx], anchors)
             all_anchors     = np.append(all_anchors, shifted_anchors, axis=0)
-            print(all_anchors.shape)
+            print(shifted_anchors.shape)
 
         all_anchors = np.expand_dims(all_anchors, axis=0)
 
